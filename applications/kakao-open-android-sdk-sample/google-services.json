@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "1082552840248",
+    "firebase_url": "https://project-81579.firebaseio.com",
+    "project_id": "project-81579",
+    "storage_bucket": "project-81579.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082552840248:android:c97d8c768b8d7778",
+        "android_client_info": {
+          "package_name": "com.kakao.sdk.sample"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_mezZDcnUyai1RuG2Xidtu9oQdwIv9_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082552840248-gkt3vl861ouqkgpkgu0mq3dj4rs8i86c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="280dp"
+                    android:background="@color/color8"
+                    android:orientation="vertical" >
+    <com.android.volley.toolbox.NetworkImageView
+        android:id="@+id/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg_image_01" />
+
+
+    <FrameLayout
+        android:id="@+id/profile_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/color6"
+        android:layout_width="77dp"
+        android:layout_height="77dp">
+        <com.android.volley.toolbox.NetworkImageView
+                android:id="@+id/com_kakao_profile_image"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:layout_gravity="center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/thumb_story"
+                android:background="@color/color6" />
+    </FrameLayout>
+    <TextView
+        android:id="@+id/profile_description"
+        android:layout_toRightOf="@+id/profile_parent"
+        android:layout_toEndOf="@+id/profile_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="10dp"
+        android:textSize="18sp"
+        android:textColor="@color/color6" />
+</RelativeLayout>

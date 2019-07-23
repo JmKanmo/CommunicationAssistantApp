@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:background="@color/color5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <com.kakao.sdk.sample.common.widget.KakaoDialogSpinner
+        xmlns:kakao="http://schemas.android.com/apk/res/com.kakao.sdk.sample"
+        android:id="@+id/chat_type"
+        style="@style/spinner"
+        kakao:kakao_prompt="@string/chat_type"
+        kakao:kakao_icon="@drawable/icon_link_02"
+        kakao:kakao_entries="@array/chat_types"/>
+
+    <com.kakao.sdk.sample.common.widget.KakaoDialogSpinner
+        xmlns:kakao="http://schemas.android.com/apk/res/com.kakao.sdk.sample"
+        android:id="@+id/message_type"
+        style="@style/spinner"
+        kakao:kakao_prompt="@string/message_type"
+        kakao:kakao_icon="@drawable/icon_link_05"
+        kakao:kakao_entries="@array/message_types"/>
+
+    <ListView
+        android:id="@+id/chat_list"
+        android:divider="@color/color2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

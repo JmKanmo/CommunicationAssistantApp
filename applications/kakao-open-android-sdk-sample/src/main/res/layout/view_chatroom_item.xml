@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:background="@drawable/selector_item_bg"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+        <com.android.volley.toolbox.NetworkImageView
+            android:id="@+id/chatroom_thumbnail"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            android:layout_gravity="center"
+            android:src="@drawable/thumb_story"
+            android:background="@color/color6" />
+
+        <TextView
+            android:layout_marginLeft="8dp"
+            android:textColor="@color/color7"
+            android:id="@+id/title"
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_gravity="bottom"
+        android:background="@color/color4"
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"/>
+</LinearLayout>

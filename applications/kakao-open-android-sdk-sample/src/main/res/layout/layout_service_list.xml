@@ -1,0 +1,150 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/view_sample_title"
+        android:layout_width="fill_parent"
+        android:layout_height="56dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/kakao_usermgmt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="180dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_item_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="79dp"
+                        android:layout_height="79dp"
+                        android:background="@drawable/icon_main_05" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/text_usermgmt"
+                        android:textColor="@color/color7"
+                        android:textSize="@dimen/menu_text_size" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="180dp"
+                    android:background="@color/color4" />
+
+                <LinearLayout
+                    android:id="@+id/kakao_story"
+                    android:layout_width="fill_parent"
+                    android:layout_height="180dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_item_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="79dp"
+                        android:layout_height="79dp"
+                        android:background="@drawable/icon_main_02" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/text_contact"
+                        android:textColor="@color/color7"
+                        android:textSize="@dimen/menu_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/color4" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/kakao_talk"
+                    android:layout_width="fill_parent"
+                    android:layout_height="180dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_item_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="79dp"
+                        android:layout_height="79dp"
+                        android:background="@drawable/icon_main_03" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/text_kakaotalk"
+                        android:textColor="@color/color7"
+                        android:textSize="@dimen/menu_text_size" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="1dp"
+                    android:layout_height="180dp"
+                    android:background="@color/color4" />
+
+                <LinearLayout
+                    android:id="@+id/kakao_push"
+                    android:layout_width="fill_parent"
+                    android:layout_height="180dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/selector_item_bg"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="79dp"
+                        android:layout_height="79dp"
+                        android:background="@drawable/icon_main_04" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="@string/text_push"
+                        android:textColor="@color/color7"
+                        android:textSize="@dimen/menu_text_size" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:background="@color/color4" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

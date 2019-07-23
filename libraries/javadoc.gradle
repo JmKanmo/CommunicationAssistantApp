@@ -1,0 +1,115 @@
+task aggregateJavadoc(type: Javadoc) {
+    source project(':libraries').subprojects.collect { project ->
+        project.android.sourceSets.main.java.srcDirs
+    }
+
+    classpath += files(project(':libraries').subprojects.collect { project ->
+        project.android.sourceSets.main.java.srcDirs
+    })
+
+    destinationDir = file("${rootProject.projectDir}/docs/")
+    title = "Kakao Android SDK - $rootProject.version"
+    description "Generates Javadoc for Kakao Android SDK - ${project.version}."
+
+    options {
+        locale = 'en_US'
+        encoding = 'UTF-8'
+        charSet = 'UTF-8'
+        author = false
+        noDeprecated = true
+        memberLevel = JavadocMemberLevel.PUBLIC
+        links("https://docs.oracle.com/javase/7/docs/api/")
+
+        if (!project.hasProperty("doclet") || project.property("doclet") == "true") {
+            doclet = "com.kakao.tools.doclets.standard.Standard"
+            docletpath = [rootProject.file('./doctemplate/capri-doclet.jar')]
+            stylesheetFile = rootProject.file('./doctemplate/capri-javadoc-stylesheet.css')
+        }
+    }
+
+    exclude '**/*.kt'
+    exclude '**/StringSet.java'
+    exclude '**/BuildConfig.java'
+    exclude '**/R.java'
+    exclude '**/exception/**'
+    exclude '**/helper/**'
+    exclude '**/multipart/**'
+    exclude '**/request/**'
+//    exclude '**/response/**'
+//    exclude '**/callback/**'
+
+    exclude '**/kakaostory/response/**'
+//    exclude '**/kakaotalk/response/**'
+    exclude '**/network/response/**'
+    exclude '**/push/response/**'
+    exclude '**/usermgmt/response/**'
+
+    exclude '**/auth/callback/**'
+    exclude '**/kakaostory/callback/**'
+    exclude '**/kakaotalk/callback/**'
+    exclude '**/usermgmt/callback/**'
+
+    exclude '**/auth/network/**'
+    exclude '**/receiver/**'
+    exclude '**/internal/**'
+    exclude '**/tasks/**'
+    exclude '**/common/**'
+    exclude '**/api/**'
+    exclude '**/ageauth/**'
+    exclude '**/kakaolink/v2/network/**'
+    exclude '**/s2/**'
+    exclude '**/storage/**'
+    exclude '**/SingleNetworkTask.java'
+    exclude "**/apicompatibility/**"
+    exclude "**/test/**"
+}
+
+project(':libraries').subprojects { subProject ->
+    afterEvaluate {
+        aggregateJavadoc.classpath += files(android.libraryVariants.collect { variant ->
+            variant.javaCompile.classpath.files // external dependencies such as firebase, etc.
+        })
+        aggregateJavadoc.classpath += files(android.getBootClasspath().join(File.pathSeparator))
+        aggregateJavadoc.classpath += files("${subProject.android.sdkDirectory}/extras/android/support/v4/android-support-v4.jar")
+        aggregateJavadoc.classpath += files("${subProject.android.sdkDirectory}/extras/android/m2repository/com/android/support/support-v4/25.3.1")
+
+        aggregateJavadoc.options.linksOffline("https://d.android.com/reference", "${subProject.android.sdkDirectory}/docs/reference")
+    }
+}
+
+task zipJavadoc(type: Zip, dependsOn: aggregateJavadoc) {
+    from "${rootProject.projectDir}/docs"
+    destinationDir=file("${rootProject.projectDir}/dist")
+    baseName="kakao-android-sdk"
+    version=rootProject.version
+    classifier='javadoc'
+}
+
+publishing {
+    repositories {
+        maven {
+            if (rootProject.versionNameSuffix == "-SNAPSHOT") {
+                url rootProject.hasProperty('NEXUS_SNAPSHOT_REPOSITORY_URL') ?
+                        NEXUS_SNAPSHOT_REPOSITORY_URL : mavenLocal().url
+            } else {
+                url rootProject.hasProperty('NEXUS_RELEASE_REPOSITORY_URL') ?
+                        NEXUS_RELEASE_REPOSITORY_URL : mavenLocal().url
+            }
+            credentials {
+                username rootProject.hasProperty('NEXUS_USERNAME') ?
+                        NEXUS_USERNAME : ""
+                password rootProject.hasProperty('NEXUS_PASSWORD') ?
+                        NEXUS_PASSWORD : ""
+            }
+            //                    url mavenLocal().url
+        }
+    }
+    publications {
+        "javadoc"(MavenPublication) {
+            groupId KAKAO_SDK_GROUP
+            artifact zipJavadoc
+            version "${rootProject.version}${rootProject.versionNameSuffix}"
+            artifactId "kakao-android-doc"
+        }
+    }
+}

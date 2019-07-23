@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "730327602236",
+    "firebase_url": "https://hello-7f944.firebaseio.com",
+    "project_id": "hello-7f944",
+    "storage_bucket": "hello-7f944.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730327602236:android:8ae65b6567f66661",
+        "android_client_info": {
+          "package_name": "com.kakao.sdk.sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730327602236-tv6gnhsn6uv6ubtjtngm49qf0rgto06o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA24Qp-qmJYSwpOxBEREQUPflIpJ-tHX78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "730327602236-tv6gnhsn6uv6ubtjtngm49qf0rgto06o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

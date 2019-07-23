@@ -1,0 +1,13 @@
+evaluationDependsOn(':libraries')
+
+android {
+//    defaultConfig {
+//        missingDimensionStrategy 'adid', 'lite', 'full'
+//    }
+//    ext.dependencyFlavors = ['s2':'lite']
+}
+
+dependencies {
+    api project(':libraries:network')
+    api "com.android.support:support-fragment:$ANDROID_SUPPORT_LIB_VERSION"
+}

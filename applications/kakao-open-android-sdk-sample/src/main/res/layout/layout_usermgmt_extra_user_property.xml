@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:background="@color/color4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:hint="@string/usermgmg_name"
+        android:id="@+id/name"
+        style="@style/com_kakao_profile_property_value" />
+
+    <EditText
+        android:layout_marginTop="8dp"
+        android:hint="@string/usermgmg_age"
+        android:id="@+id/age"
+        style="@style/com_kakao_profile_property_value" />
+
+    <com.kakao.sdk.sample.common.widget.KakaoDialogSpinner
+        xmlns:kakao="http://schemas.android.com/apk/res/com.kakao.sdk.sample"
+        android:id="@+id/gender"
+        android:layout_width="fill_parent"
+        android:layout_height="57dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/selector_editbox_bg"
+        kakao:kakao_entries="@array/usermgmg_gender_types"/>
+</LinearLayout>

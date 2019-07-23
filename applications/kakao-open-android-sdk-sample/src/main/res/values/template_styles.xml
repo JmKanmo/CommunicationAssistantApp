@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="com_kakao_profile_property_label" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/com_kakao_profile_property_margin</item>
+        <item name="android:layout_marginLeft">@dimen/com_kakao_profile_property_margin</item>
+        <item name="android:layout_marginRight">@dimen/com_kakao_profile_property_margin</item>
+        <item name="android:textSize">@dimen/com_kakao_profile_property_text</item>
+        <item name="android:textColor">@color/com_kakao_profile_text</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="com_kakao_profile_property_value" parent="@android:style/Widget.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">57dp</item>
+        <item name="android:layout_marginLeft">16sp</item>
+        <item name="android:layout_marginRight">16sp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingLeft">15sp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:textColorHint">@color/color2</item>
+        <item name="android:textColor">@color/color3</item>
+        <item name="android:background">@drawable/selector_editbox_bg</item>
+    </style>
+
+    <style name="button" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+        <item name="android:textColor">@color/color6</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_height">57dp</item>
+        <item name="android:layout_width">fill_parent</item>
+    </style>
+
+    <style name="iconText" parent="@android:style/Widget.TextView">
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:textColor">@color/color3</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:background">@drawable/selector_item_bg</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+    </style>
+
+    <style name="spinner" parent="@android:style/Widget.TextView">
+        <item name="android:background">@drawable/selector_item_bg</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">72dp</item>
+        <item name="com.kakao.sdk.sample:kakao_showTitleDivider">false</item>
+        <item name="com.kakao.sdk.sample:kakao_dialogTitle">@drawable/popup_bg_a</item>
+        <item name="com.kakao.sdk.sample:kakao_titleTextColor">@color/color6</item>
+    </style>
+
+    <style name="CustomProgressDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+</resources>

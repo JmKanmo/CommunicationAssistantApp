@@ -1,0 +1,5 @@
+<resources>
+    <string name="kakaotalk_host">kakaotalk</string>
+    <string name="kakaolink_host">kakaolink</string>
+    <string name="kakaostory_host">kakaostory</string>
+</resources>

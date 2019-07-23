@@ -1,0 +1,65 @@
+evaluationDependsOn(':applications')
+
+android {
+    defaultConfig {
+        missingDimensionStrategy 'adid', 'lite', 'full'
+    }
+
+    productFlavors {
+        dev {
+            resValue 'string', 'kakao_phase', 'dev'
+            resValue 'string', 'kakao_app_key', 'ec09748675bf7cc01d638d8c40a79c85'
+            resValue 'string', 'kakao_scheme', 'kakaoec09748675bf7cc01d638d8c40a79c85'
+            resValue 'string', 'kakao_client_secret', '50LxgHsF3Q3ayNa3nJpTTMEfBR8KkY7X'
+        }
+
+        sandbox {
+            resValue 'string', 'kakao_phase', 'sandbox'
+            resValue 'string', 'kakao_app_key', 'cd9b86b063c3037851a4671c1712c01b'
+            resValue 'string', 'kakao_scheme', 'kakaocd9b86b063c3037851a4671c1712c01b'
+            resValue 'string', 'kakao_client_secret', 'ESk0Ap48lPYbLoQSSar2jevv6ZFob9qG'
+        }
+
+        cbt {
+            resValue 'string', 'kakao_phase', 'cbt'
+            resValue 'string', 'kakao_app_key', 'dd4e9cb75815cbdf7d87ed721a659baf'
+            resValue 'string', 'kakao_scheme', 'kakaodd4e9cb75815cbdf7d87ed721a659baf'
+            resValue 'string', 'kakao_client_secret', '50LxgHsF3Q3ayNa3nJpTTMEfBR8KkY7X'
+        }
+
+        production {
+            resValue 'string', 'kakao_phase', 'production'
+            resValue 'string', 'kakao_app_key', 'dd4e9cb75815cbdf7d87ed721a659baf'
+            resValue 'string', 'kakao_scheme', 'kakaodd4e9cb75815cbdf7d87ed721a659baf'
+            resValue 'string', 'kakao_client_secret', '50LxgHsF3Q3ayNa3nJpTTMEfBR8KkY7X'
+        }
+    }
+}
+
+dependencies {
+    implementation group: 'com.android.support', name: 'support-v4', version: project.ANDROID_SUPPORT_LIB_VERSION
+    implementation project(':libraries:kakaotalk')
+    implementation project(':libraries:push')
+
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
+    implementation "com.android.support:appcompat-v7:$ANDROID_SUPPORT_LIB_VERSION"
+
+    /**
+     * Below dependencies should be in this gradle file even though they are already in
+     * applications.gradle because otherwise 'com.google.gms.google-services' plugin would not
+     * be able to detect firebase version and try to use default firebase version, which is likely
+     * to create a version conflict with the one used by push service.
+     */
+    implementation ("com.google.android.gms:play-services-gcm:$GOOGLE_PLAY_SERVICES_VERSION") {
+        exclude module: 'support-v4'
+    }
+    implementation "com.google.firebase:firebase-messaging:17.3.3"
+    implementation "com.google.firebase:firebase-core:16.0.4"
+    implementation "com.google.android.gms:play-services-base:16.0.1"
+    androidTestImplementation 'com.android.support.test.uiautomator:uiautomator-v18:2.1.3'
+    implementation 'com.google.firebase:firebase-database:16.1.0'
+    implementation 'com.google.firebase:firebase-storage:16.1.0'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.google.firebase:firebase-auth:16.2.0'
+}
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,30 @@
+// Include SDK modulees
+include ':libraries:common'
+include ':libraries:auth'
+include ':libraries:friends'
+include ':libraries:kakaolink'
+include ':libraries:kakaotalk'
+include ':libraries:network'
+include ':libraries:push'
+include ':libraries:s2'
+include ':libraries:test-common'
+include ':libraries:usermgmt'
+include ':libraries:plusfriend'
+include ':libraries:util'
+include ':libraries:message-template'
+
+// Include sample apps
+include ':applications:kakao-open-android-sdk-sample'
+
+
+rootProject.children.each { project ->
+    project.buildFileName = "${project.name}.gradle"
+}
+
+project(':applications').children.each { project ->
+    project.buildFileName = "${project.name}.gradle"
+}
+
+project(':libraries').children.each { project ->
+    project.buildFileName = "${project.name}.gradle"
+}

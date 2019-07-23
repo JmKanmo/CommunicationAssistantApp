@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">Kakao SDK Sample</string>
+
+    <string name="text_contact">HearNSpeak</string>
+    <string name="text_kakaotalk">KakaoTalk</string>
+    <string name="text_push">Push</string>
+    <string name="text_usermgmt">User Management</string>
+    <string name="text_friends">Friends</string>
+    <string name="text_storage">Storage API</string>
+    <string name="text_chat_list">Chat Lists</string>
+
+    <!-- For kakaoStory -->
+    <string name="kakaostory_user_check_button">Check Story User</string>
+    <string name="kakaostory_profile_button">Get Story Profile</string>
+    <string name="kakaostory_note_post_button">Post Note</string>
+    <string name="kakaostory_photo_post_button">Post Photo</string>
+    <string name="kakaostory_link_post_button">Post Link</string>
+    <string name="kakaostory_get_post_button">Get Last Photo</string>
+    <string name="kakaostory_get_posts_button">Get Recent Posts</string>
+    <string name="kakaostory_delete_post_button">Delete Last Post</string>
+
+    <!-- For kakaoTalk -->
+    <string name="kakaotalk_profile_button">Get Talk Profile</string>
+    <string name="kakaotalk_country_label">country ISO</string>
+    <string name="text_talk_story">Talk | Story</string>
+
+    <!-- For Push -->
+    <string name="push_notification_title">PushSample Notification</string>
+    <string name="push_send">Send push msg to me</string>
+    <string name="push_tokens">Get push token info</string>
+    <string name="push_unregister">Unregister push token</string>
+    <string name="push_register">Register push token</string>
+
+    <!-- For Push -->
+    <string name="usermgmg_signup_button">Signup</string>
+    <string name="usermgmg_me_button">Update scope</string>
+    <string name="usermgmg_update_profile_button">Update</string>
+
+    <string name="usermgmg_name">Write Your Name</string>
+    <string name="usermgmg_age">Write Your Age</string>
+
+    <string name="com_kakao_profile_email">Email</string>
+    <string name="com_kakao_profile_phone_number">Phone Number</string>
+    <string name="com_kakao_profile_nickname">Alias</string>
+    <string name="com_kakao_profile_age_range">Age range</string>
+    <string name="com_kakao_profile_birthday">Birthday</string>
+    <string name="com_kakao_profile_gender">Gender</string>
+    <string name="error_message_for_service_unavailable">Unstable network connection. \nPlease try again later.</string>
+
+    <!-- NEW DISIGN -->
+
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="text_for_login_kakao_account">Log in with Kakao</string>
+
+    <string name="image_upload">Image Upload</string>
+    <string name="pick_iamges">Pick Images</string>
+
+    <string name="send_message">"초대메시지를 보내겠습니까?"</string>
+
+    <string-array name="usermgmg_gender_types">
+        <item>@string/female</item>
+        <item>@string/male</item>
+    </string-array>
+
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+
+    <string name="message_type">Choose a message type</string>
+    <string-array name="message_types">
+        <item>FEED TEMPLATE</item>
+        <item>LIST TEMPLATE</item>
+        <item>DEFAULT TEMPLATE</item>
+    </string-array>
+
+    <string name="chat_type">ChatRoom Type</string>
+    <string-array name="chat_types">
+        <item>abailable all chatroom</item>
+        <item>regular direct chatroom</item>
+        <item>regular multi chatroom</item>
+        <item>regular all chatroom</item>
+        <item>open direct chatroom</item>
+        <item>open multi chatroom</item>
+        <item>open all chatroom</item>
+    </string-array>
+
+    <string name="text_send_to_me">Send Message to me</string>
+    <string name="title_activity_login_fragment">LoginFragmentActivity</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="text_login_fragment">Login with Fragment</string>
+    <string name="text_login_activity">Login with Activity</string>
+
+    <string name="title_activity_sample_login">SampleLoginActivity</string>
+
+    <string name="needs_account_email_scope">Needs email scope</string>
+    <string name="needs_phone_number_scope">Needs phone number scope</string>
+
+    <!--  BluetoothChat -->
+    <string name="send">Send</string>
+    <string name="not_connected">You are not connected to a device</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving Bluetooth Chat.</string>
+    <string name="title_connecting">connecting...</string>
+    <string name="title_connected_to">connected to <xliff:g id="device_name">%1$s</xliff:g></string>
+    <string name="title_not_connected">not connected</string>
+
+    <!--  DeviceListActivity -->
+    <string name="scanning">scanning for devices...</string>
+    <string name="select_device">select a device to connect</string>
+    <string name="none_paired">No devices have been paired</string>
+    <string name="none_found">No devices found</string>
+    <string name="title_paired_devices">Paired Devices</string>
+    <string name="title_other_devices">Other Available Devices</string>
+    <string name="button_scan">Scan for devices</string>
+
+    <!-- Options Menu -->
+    <string name="secure_connect">Connect a device - Secure</string>
+    <string name="insecure_connect">Connect a device - Insecure</string>
+    <string name="discoverable">Make discoverable</string>
+
+</resources>

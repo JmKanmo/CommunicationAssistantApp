@@ -1,0 +1,25 @@
+evaluationDependsOn(':libraries')
+
+android {
+    flavorDimensions 'adid'
+
+    productFlavors {
+        full {
+            dimension 'adid'
+        }
+        lite {
+            dimension 'adid'
+        }
+    }
+}
+
+dependencies {
+    api project(':libraries:network')
+
+    fullImplementation("com.google.android.gms:play-services-ads:$GOOGLE_PLAY_SERVICES_VERSION") {
+        exclude module: 'support-v4'
+    }
+    testImplementation("com.google.android.gms:play-services-ads:$GOOGLE_PLAY_SERVICES_VERSION") {
+        exclude module: 'support-v4'
+    }
+}

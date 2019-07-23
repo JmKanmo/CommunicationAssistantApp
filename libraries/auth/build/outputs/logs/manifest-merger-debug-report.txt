@@ -1,0 +1,53 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:1:1-17:12
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:1:1-17:12
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:1:1-17:12
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:1:1-17:12
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:1:1-17:12
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:1:1-17:12
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:1:1-17:12
+	package
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:3:5-29
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:1:1-17:12
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:1:1-17:12
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:2:5-63
+application
+ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:5:5-15:19
+activity#com.kakao.auth.authorization.authcode.KakaoWebViewActivity
+ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:6:9-13:20
+	android:label
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:8:13-59
+	android:launchMode
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:9:13-43
+	android:windowSoftInputMode
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:11:13-55
+	android:exported
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:12:13-37
+	android:configChanges
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:10:13-59
+	android:name
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml:7:13-86
+uses-sdk
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\auth\src\main\AndroidManifest.xml

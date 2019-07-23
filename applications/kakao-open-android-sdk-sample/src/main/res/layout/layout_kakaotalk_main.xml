@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:background="@color/color5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/title"
+        android:layout_width="fill_parent"
+        android:layout_height="56dp"
+        layout="@layout/view_sample_title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.kakao.sdk.sample.common.widget.ProfileLayout
+                android:id="@+id/com_kakao_user_profile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <CheckedTextView
+                android:id="@+id/profile_button"
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                style="@style/iconText"
+                android:drawableLeft="@drawable/icon_story_02"
+                android:text="@string/kakaotalk_profile_button" />
+
+            <ImageView
+                android:background="@color/color4"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"/>
+
+            <CheckedTextView
+                android:id="@+id/talk_friends"
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                style="@style/iconText"
+                android:drawableLeft="@drawable/icon_story_01"
+                android:text="@string/text_friends" />
+
+            <ImageView
+                android:background="@color/color4"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"/>
+
+            <CheckedTextView
+                android:id="@+id/talk_chat_list"
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                style="@style/iconText"
+                android:drawableLeft="@drawable/icon_story_03"
+                android:text="@string/text_chat_list" />
+
+            <ImageView
+                android:background="@color/color4"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"/>
+
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/selector_button_03"
+                style="@style/button"
+                android:text="@string/com_kakao_logout_button" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

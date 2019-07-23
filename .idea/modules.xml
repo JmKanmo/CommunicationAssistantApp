@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Communication_help.iml" filepath="$PROJECT_DIR$/Communication_help.iml" />
+      <module fileurl="file://$PROJECT_DIR$/applications/applications.iml" filepath="$PROJECT_DIR$/applications/applications.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/auth/auth.iml" filepath="$PROJECT_DIR$/libraries/auth/auth.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/common/common.iml" filepath="$PROJECT_DIR$/libraries/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/friends/friends.iml" filepath="$PROJECT_DIR$/libraries/friends/friends.iml" />
+      <module fileurl="file://$PROJECT_DIR$/applications/kakao-open-android-sdk-sample/kakao-open-android-sdk-sample.iml" filepath="$PROJECT_DIR$/applications/kakao-open-android-sdk-sample/kakao-open-android-sdk-sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/kakaolink/kakaolink.iml" filepath="$PROJECT_DIR$/libraries/kakaolink/kakaolink.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/kakaotalk/kakaotalk.iml" filepath="$PROJECT_DIR$/libraries/kakaotalk/kakaotalk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/message-template/message-template.iml" filepath="$PROJECT_DIR$/libraries/message-template/message-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/network/network.iml" filepath="$PROJECT_DIR$/libraries/network/network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/plusfriend/plusfriend.iml" filepath="$PROJECT_DIR$/libraries/plusfriend/plusfriend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/push/push.iml" filepath="$PROJECT_DIR$/libraries/push/push.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/s2/s2.iml" filepath="$PROJECT_DIR$/libraries/s2/s2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/test-common/test-common.iml" filepath="$PROJECT_DIR$/libraries/test-common/test-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/usermgmt/usermgmt.iml" filepath="$PROJECT_DIR$/libraries/usermgmt/usermgmt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/util/util.iml" filepath="$PROJECT_DIR$/libraries/util/util.iml" />
+    </modules>
+  </component>
+</project>

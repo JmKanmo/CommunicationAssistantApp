@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">들림e</string>
+
+    <string name="text_contact">통화목록</string>
+    <string name="text_kakaotalk">카톡친구</string>
+    <string name="text_push">푸쉬 알림</string>
+    <string name="text_usermgmt">사용자 관리</string>
+
+    <string name="text_friends">친구 목록</string>
+    <string name="text_chat_list">채팅방 목록</string>
+
+    <string name="kakaotalk_profile_button">프로필</string>
+    <string name="kakaotalk_country_label">국가코드</string>
+
+    <string name="push_notification_title">푸시샘플 알림</string>
+    <string name="push_send">푸시 메시지 나에게 보내기</string>
+    <string name="push_tokens">푸시토큰 조회</string>
+    <string name="push_unregister">푸시토큰 삭제</string>
+    <string name="push_register">푸시토큰 등록</string>
+
+    <string name="cancel">취소</string>
+    <string name="ok">확인</string>
+    <string name="com_kakao_profile_email">이메일</string>
+    <string name="com_kakao_profile_phone_number">전화번호</string>
+    <string name="com_kakao_profile_nickname">별명</string>
+    <string name="com_kakao_profile_age_range">연령대</string>
+    <string name="com_kakao_profile_birthday">생일</string>
+    <string name="com_kakao_profile_gender">성별</string>
+    <string name="error_message_for_service_unavailable">서비스 연결상태가 좋지 않습니다.\n\n잠시 후 다시 시도해 주세요.</string>
+
+    <string name="kakaostory_user_check_button">가입자확인</string>
+    <string name="kakaostory_profile_button">프로필</string>
+    <string name="kakaostory_note_post_button">노트 포스트</string>
+    <string name="kakaostory_photo_post_button">사진 포스트</string>
+    <string name="kakaostory_link_post_button">링크 포스트</string>
+    <string name="kakaostory_get_post_button">마지막 포스트 정보</string>
+    <string name="kakaostory_get_posts_button">최근 여러 포스트 정보</string>
+    <string name="kakaostory_delete_post_button">마지막 포스트 삭제</string>
+
+
+    <string name="usermgmg_signup_button">가입</string>
+    <string name="usermgmg_me_button">동의 받기</string>
+    <string name="usermgmg_update_profile_button">업데이트</string>
+
+    <string name="usermgmg_name">이름을 입력하세요.</string>
+    <string name="usermgmg_age">나이를 입력하세요.</string>
+
+    <string-array name="usermgmg_gender_types">
+        <item>@string/female</item>
+        <item>@string/male</item>
+    </string-array>
+
+    <string name="male">남</string>
+    <string name="female">여</string>
+
+    <string name="message_type">메세지 형식</string>
+    <string-array name="message_types">
+        <item>피드 템플릿</item>
+        <item>리스트 템플릿</item>
+        <item>기본 템플릿</item>
+    </string-array>
+
+    <string name="chat_type">요청할 채팅방 종류</string>
+    <string-array name="chat_types">
+        <item>권한이 있는 모든 채팅방</item>
+        <item>일반 1:1 채팅방</item>
+        <item>일반 그룹채팅방</item>
+        <item>일반 채팅방</item>
+        <item>오픈 1:1 채팅방</item>
+        <item>오픈 그룹채팅방</item>
+        <item>오픈 채팅방</item>
+    </string-array>
+
+    <string name="text_send_to_me">나에게 보내기</string>
+
+    <string name="text_login_fragment">Fragment로 로그인하기</string>
+    <string name="text_login_activity">Activity로 로그인하기</string>
+
+    <string name="needs_account_email_scope">이메일 제공 동의가 필요함</string>
+    <string name="needs_phone_number_scope">전화번호 제공 동의가 필요함</string>
+</resources>

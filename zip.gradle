@@ -1,0 +1,71 @@
+import org.apache.tools.ant.filters.ConcatFilter
+
+task setDefaultPhase {
+    doLast {
+        ant.propertyfile(file: "${rootProject.projectDir}/gradle.properties") {
+            if (rootProject.hasProperty('deploy_phase')) {
+                entry(key: 'DEFAULT_PHASE', value: rootProject.deploy_phase)
+            }
+        }
+    }
+}
+
+task clearDefaultPhase {
+    doLast {
+        ant.propertyfile(file: "${rootProject.projectDir}/gradle.properties") {
+            if (rootProject.hasProperty('deploy_phase')) {
+                entry(key: 'DEFAULT_PHASE', operation: 'del')
+            }
+        }
+    }
+}
+
+task copyFullSource(dependsOn: [cleanTask, setDefaultPhase, bumpVersionInProperties]) {
+    doLast {
+        copy {
+            from '.'
+            into project.DIST_FULL_SOURCE_DIR
+            exclude project.DIST_DIR
+            exclude relativePath(project.buildDir)
+            exclude '.gradle'
+            exclude '.idea'
+            exclude '**/*.iml'
+            exclude '**/*.sh'
+            exclude '**/README.md'
+            exclude '**/.build'
+            exclude '**/build'
+            exclude '**/.DS_Store'
+            exclude '**/doctemplate'
+            exclude '_gradle.properties'
+            exclude 'applications/kakao-open-android-ageauth-sample'
+            exclude 'applications/kakao-open-android-s2-sample'
+        }
+
+        copy {
+            from 'gradle.properties'
+            into project.DIST_FULL_SOURCE_DIR
+
+            filter(ConcatFilter, append: file('_gradle.properties'))
+        }
+
+        String content = ""
+        File proFile = new File("${project.DIST_FULL_SOURCE_DIR}/settings.gradle")
+        proFile.readLines().each { String line ->
+            if (!line.contains(':kakao-open-android-ageauth-sample')
+                    && !line.contains(':kakao-open-android-s2-sample')) {
+                content = content.concat(line + '\n')
+            }
+        }
+        proFile.write(content)
+    }
+    finalizedBy(':clearDefaultPhase')
+}
+
+task zipFullSource(type: Zip, dependsOn : copyFullSource) {
+    from project.DIST_FULL_SOURCE_DIR
+    destinationDir=file(project.DIST_DIR)
+    baseName="kakao-android-sdk-project"
+    version=project.version
+    classifier='full'
+    delete project.DIST_FULL_SOURCE_DIR
+}

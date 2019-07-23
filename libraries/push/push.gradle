@@ -1,0 +1,18 @@
+evaluationDependsOn(':libraries')
+
+android {
+    defaultConfig {
+        missingDimensionStrategy 'adid', 'lite', 'full'
+    }
+}
+
+dependencies {
+    api project(':libraries:usermgmt')
+
+    implementation("com.google.android.gms:play-services-gcm:$GOOGLE_PLAY_SERVICES_VERSION") {
+        exclude module: 'support-v4'
+    }
+    implementation "com.google.firebase:firebase-messaging:$GOOGLE_PLAY_SERVICES_VERSION"
+    implementation "com.google.firebase:firebase-core:$GOOGLE_PLAY_SERVICES_VERSION"
+    implementation "com.google.android.gms:play-services-base:$GOOGLE_PLAY_SERVICES_VERSION"
+}

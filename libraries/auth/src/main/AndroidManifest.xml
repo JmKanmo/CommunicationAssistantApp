@@ -1,0 +1,17 @@
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kakao.auth">
+
+    <application>
+        <activity
+            android:name="com.kakao.auth.authorization.authcode.KakaoWebViewActivity"
+            android:label="@string/com_kakao_login_button"
+            android:launchMode="singleTop"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustResize"
+            android:exported="false">
+        </activity>
+
+    </application>
+
+</manifest>

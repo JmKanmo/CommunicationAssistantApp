@@ -1,0 +1,123 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    repositories {
+        jcenter()
+        google()
+        maven { url 'https://raw.github.com/xujiaao/mvn-repository/master/releases' }
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.1'
+        classpath 'com.google.gms:google-services:4.0.2'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+plugins {
+    id 'org.ajoberstar.grgit' version '2.0.0'
+    id 'java'
+    id 'maven-publish'
+}
+
+import org.ajoberstar.grgit.Grgit
+
+ext {
+    git = null
+    try {
+        git = Grgit.open()
+        versionCode = git.tag.list().size()
+        version = git.describe().split('-')[0]
+        branchName = project.hasProperty("branch") ? project.property("branch") : git.branch.current().name
+        println "current branch: ${branchName}"
+        if (branchName.startsWith('master')) {
+            // do not bump version for master branch because release version is already tagged.
+            project.ext.versionCode = versionCode
+            project.version = version
+            project.ext.versionNameSuffix = ''
+        } else if (branchName.startsWith('hotfix')) {
+            bumpVersion(rootProject, 'revision')
+            project.ext.versionNameSuffix = "-SNAPSHOT"
+        } else {
+            bumpVersion(rootProject, 'minor')
+            project.ext.versionNameSuffix = "-SNAPSHOT"
+        }
+    } catch (Exception e) {
+        println e
+        project.ext.versionCode = project.VERSION_CODE.toInteger()
+        project.version = project.KAKAO_SDK_VERSION
+        project.ext.versionNameSuffix = "-SNAPSHOT"
+    }
+
+    println "version: ${project.version}${project.ext.versionNameSuffix}"
+    println "versionCode: ${project.versionCode}"
+}
+
+subprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/' }
+    }
+}
+
+// for publishing
+task cleanTask {
+    doLast {
+        println 'clean dist/ dir for copying and zipping full source...'
+        delete DIST_DIR
+    }
+}
+
+task bumpVersionInProperties {
+    doLast {
+        if (!git) {
+            println "This is not a git repository. Using KAKAO_SDK_VERSION in gradle.properties."
+            return
+        }
+
+        if (!project.hasProperty('KAKAO_SDK_VERSION')) {
+            println "There is no KAKAO_SDK_VERSION in gradle.properties.."
+            return
+        }
+
+        if (rootProject.version.startsWith(project.property("KAKAO_SDK_VERSION")) && project.property("VERSION_CODE").toInteger() == rootProject.versionCode) {
+            return
+        }
+        ant.propertyfile(file: "${rootProject.projectDir}/gradle.properties") {
+            if (rootProject.hasProperty('KAKAO_SDK_VERSION')) {
+                println "bumping KAKAO_SDK_VERSION to ${rootProject.version}"
+                entry(key: 'VERSION_CODE', value: rootProject.versionCode)
+                entry(key: 'KAKAO_SDK_VERSION', value: rootProject.version)
+            }
+        }
+    }
+}
+
+static def bumpVersion(Project project, String updateType) {
+    String rawVersion = project.ext.version
+    String[] version = rawVersion.split("\\.")
+    String updatedVersion
+    String delimiter = "."
+    int newVersion
+    if (updateType == 'revision') {
+        newVersion = Integer.valueOf(version[2]) + 1
+        updatedVersion = version[0] + delimiter + version[1] + delimiter + newVersion
+
+    } else if (updateType == 'major') {
+        newVersion = Integer.valueOf(version[0]) + 1
+        updatedVersion = newVersion + delimiter + 0 + delimiter + 0
+
+    } else if (updateType == 'minor') {
+        newVersion = Integer.valueOf(version[1]) + 1
+        updatedVersion = version[0] + delimiter + newVersion + delimiter + 0
+    } else {
+        return rawVersion
+    }
+
+    project.ext.versionCode = project.ext.versionCode + 1
+    project.version = updatedVersion
+    return updatedVersion
+}
+
+apply from: "$rootDir/zip.gradle"

@@ -1,0 +1,37 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:1-38
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:1-38
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:1-38
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:1-38
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:1-38
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:1-38
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:1-38
+	package
+		ADDED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:11-35
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:1-38
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:1-38
+	android:versionCode
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml:1:1-38
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+uses-sdk
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidProjects\Communication_help\libraries\util\src\main\AndroidManifest.xml

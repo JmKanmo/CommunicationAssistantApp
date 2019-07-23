@@ -1,0 +1,32 @@
+evaluationDependsOn(':applications')
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // 카카오스토리, 카카오톡 sdk를 사용하기 위해 필요.
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
+    implementation group: 'com.android.support', name: 'support-v4', version: project.ANDROID_SUPPORT_LIB_VERSION
+
+    // 카카오스토리 sdk를 사용하기 위해 필요.
+    implementation group: project.KAKAO_SDK_GROUP, name: getModuleName('kakaostory'), version: project.KAKAO_SDK_VERSION
+
+    // 카카오톡 sdk를 사용하기 위해 필요.
+    implementation group: project.KAKAO_SDK_GROUP, name: getModuleName('kakaotalk'), version: project.KAKAO_SDK_VERSION
+
+    // push sdk를 사용하기 위해 필요.
+    implementation group: project.KAKAO_SDK_GROUP, name: getModuleName('push'), version: project.KAKAO_SDK_VERSION
+
+    // storage sdk를 사용하기 위해 필요.
+    implementation group: project.KAKAO_SDK_GROUP, name: getModuleName('storage'), version: project.KAKAO_SDK_VERSION
+}
+
+def getModuleName(moduleName) {
+    println moduleName + ", " + project.defaultDeployPhase
+    def result = moduleName
+    if(project.defaultDeployPhase.toLowerCase() == 'release') {
+        return result
+    }
+
+    return result + "-${project.defaultDeployPhase.toLowerCase()}"
+}
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,7 @@
+evaluationDependsOn(':libraries')
+
+android {
+    defaultConfig {
+        buildConfigField "String", "SDK_VERSION", "\"${project.version}\""
+    }
+}

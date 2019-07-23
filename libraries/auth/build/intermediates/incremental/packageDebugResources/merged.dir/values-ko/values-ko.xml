@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="auth_code_cancel">Auth code 요청 중 뒤로가기 또는 동의안함 버튼을 클릭하였습니다.</string>
+    <string name="button_for_ssl_go_back">뒤로</string>
+    <string name="button_for_ssl_go_forward">계속</string>
+    <string name="core_com_kakao_sdk_loading">로딩중…</string>
+    <string name="image_upload_chooser_text">이미지를 어떻게 업로드하시겠습니까?</string>
+    <string name="message_for_ssl_warning">사이트의 보안 인증서에 문제가 있습니다.</string>
+    <string name="title_for_ssl_warning">보안 경고</string>
+</resources>

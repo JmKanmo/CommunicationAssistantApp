@@ -1,0 +1,6 @@
+evaluationDependsOn(':libraries')
+
+dependencies {
+    api project(':libraries:util')
+    api "com.android.support:support-annotations:$ANDROID_SUPPORT_LIB_VERSION"
+}

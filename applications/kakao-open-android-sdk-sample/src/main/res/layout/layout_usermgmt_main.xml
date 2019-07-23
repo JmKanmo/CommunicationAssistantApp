@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:background="@color/color5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/title"
+            android:layout_width="fill_parent"
+            android:layout_height="56dp"
+            layout="@layout/view_sample_title" />
+
+        <com.kakao.sdk.sample.common.widget.ProfileLayout
+            android:id="@+id/com_kakao_user_profile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <com.kakao.sdk.sample.usermgmt.ExtraUserPropertyLayout
+            android:id="@+id/extra_user_property"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/buttonMe"
+                android:layout_weight="1"
+                style="@style/button"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/selector_button_01"
+                android:text="@string/usermgmg_me_button" />
+
+            <Button
+                android:id="@+id/buttonUpdateProfile"
+                android:layout_weight="1"
+                android:layout_marginLeft="4dp"
+                android:background="@drawable/selector_button_01"
+                style="@style/button"
+                android:text="@string/usermgmg_update_profile_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/logout_button"
+                android:layout_weight="1"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/selector_button_03"
+                style="@style/button"
+                android:text="@string/com_kakao_logout_button" />
+
+            <Button
+                android:id="@+id/unlink_button"
+                android:layout_weight="1"
+                android:layout_marginLeft="4dp"
+                android:background="@drawable/selector_button_02"
+                style="@style/button"
+                android:text="@string/com_kakao_unlink_button" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="50dp"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/token_info_button"
+                android:layout_weight="1"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/selector_button_01"
+                style="@style/button"
+                android:text="@string/com_kakao_tokeninfo_button"
+                android:layout_width="0dp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

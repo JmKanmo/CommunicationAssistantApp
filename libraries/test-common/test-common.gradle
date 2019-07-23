@@ -1,0 +1,16 @@
+evaluationDependsOn(':libraries')
+
+android {
+    lintOptions {
+        disable 'InvalidPackage' //
+    }
+}
+
+dependencies {
+    implementation project(':libraries:common')
+    implementation "junit:junit:$JUNIT_VERSION"
+    implementation "org.robolectric:robolectric:$ROBOLECTRIC_VERSION"
+    implementation "org.robolectric:shadows-support-v4:$ROBOLECTRIC_SHADOW_VERSION"
+    implementation "org.mockito:mockito-core:$MOCKITO_VERSION"
+    implementation "org.hamcrest:hamcrest-library:$HAMCREST_VERSION"
+}
