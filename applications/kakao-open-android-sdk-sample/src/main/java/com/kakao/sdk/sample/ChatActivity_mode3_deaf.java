@@ -23,7 +23,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -62,7 +61,6 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
     EditText ttsEdit;
     int n1; // 말풍선
     int n2;
-    ///////////////////////////
     private String chat_user_name = FirebaseAuth.getInstance().getCurrentUser().getEmail().split("@")[0];
     private DatabaseReference reference;
     private String chat_room;
@@ -97,21 +95,15 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d("프로세스", "전화모드농인실행");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_dial_deaf);
 
         if (ChatActivity_mode3_select.received) {
-            Log.d("TTT", "받은사람입니다");
+            //전화를 받음
             reference = FirebaseDatabase.getInstance().getReference("통화").child(ChatActivity_mode3_select.sender + "&" + chat_user_name);
-            Log.d("TTT", ChatActivity_mode3_select.sender + "&" + chat_user_name);
             reference.addChildEventListener(childEventListener);
             target_name = findViewById(R.id.target_name);
             FindAddressClick(ChatActivity_mode3_select.sender);
-            //target_name.setText(info[0]);
-            Log.d("TAG", "target_name: " + target_name.getText());
-
-
             ChatData chatData = new ChatData();
             String temp = reference.push().toString();
             DatabaseReference ref = reference.child(temp.split("/")[temp.split("/").length - 1]);
@@ -122,19 +114,12 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
             chatData.setUser_room("");
             chatData.setDatabaseReference(temp);
             ref.setValue(chatData);
-
-
         } else {
-            Log.d("TTT", "보낸사람입니다");
+            //전화를 걸음
             reference = FirebaseDatabase.getInstance().getReference("통화").child(chat_user_name + "&" + KakaoTalkFriendListActivity.chat_target_name);
-            Log.d("TTT", chat_user_name + "&" + KakaoTalkFriendListActivity.chat_target_name);
             reference.addChildEventListener(childEventListener);
             target_name = findViewById(R.id.target_name);
             FindAddressClick(KakaoTalkFriendListActivity.chat_target_name);
-            //target_name.setText(info[0]);
-            Log.d("TAG", "target_name: " + target_name.getText());
-
-
             ChatData chatData = new ChatData();
             String temp = reference.push().toString();
             DatabaseReference ref = reference.child(temp.split("/")[temp.split("/").length - 1]);
@@ -145,8 +130,6 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
             chatData.setUser_room("");
             chatData.setDatabaseReference(temp);
             ref.setValue(chatData);
-
-
         }
 
 
@@ -172,6 +155,7 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
         i.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getPackageName());
         i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ko-KR");
 
+        //나가기버튼 클릭이벤트
         exit_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -218,9 +202,7 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
                 ad.setNegativeButton("말하기", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         String msg = ttsEdit.getText().toString();
-
                         if (msg == null || msg.isEmpty() == true || spaceCheck(msg)) {
                         } else {
                             ChatData chatData = new ChatData();
@@ -234,31 +216,12 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
                             chatData.setDatabaseReference(temp);
                             ref.setValue(chatData);
                             ref.removeValue();
-                            // firebase에 조지기
                         }
                     }
                 });
-                // 창 띄우기
                 ad.show();
             }
         });
-        /*
-        mic_Btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ChatData chatData = new ChatData();
-                String temp = reference.push().toString();
-                DatabaseReference ref = reference.child(temp.split("/")[temp.split("/").length - 1]);
-                chatData.setMsg("");
-                chatData.setFuntcion("mic_on");
-                chatData.setUser_name(chat_user_name);
-                chatData.setUser_room("");
-                chatData.setDatabaseReference(temp);
-                ref.setValue(chatData);
-                // firebase에 조지기
-            }
-        });
-*/
     }
 
     @Override
@@ -290,39 +253,31 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
 
     @Override
     protected void onStart() {
-        Log.d("TAG_ChatActivity_mode2", "onStart");
         super.onStart();
     }
 
     @Override
     protected void onResume() {
-        Log.d("TAG_ChatActivity_mode2", "onResume");
         super.onResume();
     }
 
     @Override
     protected void onRestart() {
-        Log.d("TAG_ChatActivity_mode2", "onRestart");
         super.onRestart();
-
     }
 
     @Override
     protected void onPause() {
-        Log.d("TAG_ChatActivity_mode2", "onPause");
         super.onPause();
-
     }
 
     @Override
     protected void onStop() {
-        Log.d("TAG_ChatActivity_mode2", "onStop");
         super.onStop();
     }
 
     @Override
     protected void onDestroy() {
-        Log.d("TAG_ChatActivity_mode2", "onDestroy");
         ChatData chatData = new ChatData();
         String temp = reference.push().toString();
         DatabaseReference ref = reference.child(temp.split("/")[temp.split("/").length - 1]);
@@ -336,10 +291,8 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
         ref.removeValue();
         finish();
         super.onDestroy();
-
         reference.removeEventListener(childEventListener);
         reference.removeValue();
-        // finish();
     }
 
     @Override
@@ -417,18 +370,15 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
     private void FindAddressClick(String id) {
 
         FirebaseDatabase.getInstance().getReference("유저목록").orderByPriority().addListenerForSingleValueEvent(new ValueEventListener() {
-
             String deaf;
             String nickname;
             String userId;
             String phoneNumber;
 
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (String str : dataSnapshot.getValue().toString().split(",")) {
-
 
                     if (str.split("=")[0].equals(" msg")) {
                         deaf = str.split("=")[1];
@@ -449,7 +399,6 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
                     if (str.split("=")[0].equals(" function")) {
                         if (userId.equals(id)) {
                             info[0] = nickname + "&" + phoneNumber + "&" + deaf;
-                            Log.d("프로세스", "변수에 값이 채워질때 " + info[0]);
                             target_name.setText(info[0].split("&")[0] + (deaf.equals("deaf") ? "(농인)" : "(비농인)"));
                             return;
                         }
@@ -466,8 +415,5 @@ public class ChatActivity_mode3_deaf extends AppCompatActivity implements TextVi
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-        Log.d("TAG", "함수의 끝" + info[0]);
     }
-
 }
