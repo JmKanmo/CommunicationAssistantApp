@@ -51,7 +51,6 @@ public class MainActivity extends BaseActivity implements TextView.OnEditorActio
     boolean next = false;
     final Context context = this;
 
-
     String[] perMissionList = {
             Manifest.permission.RECORD_AUDIO,
             Manifest.permission.INTERNET,
@@ -75,29 +74,16 @@ public class MainActivity extends BaseActivity implements TextView.OnEditorActio
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Log.d("프로세스", "메인엑티비티실행");
         firebaseAuth = FirebaseAuth.getInstance();
         progressDialog = new ProgressDialog(this);
-        //initializing views
         callback = new Session_Callback();
         Session.getCurrentSession().addCallback(callback);
-        
-/*
-        if (i!=null) {
-            if (!i.getExtras().isEmpty()) {
-                Log.d("TAG", i.getStringExtra("email") + " " + i.getStringExtra("nickname") + " " +
-                        i.getStringExtra("phoneNumber"));
-            }
-        }
-*/
+
         if (getIntent().getExtras() != null) {
-            Log.d("프로세스", "인텐트를 넘겨받음");
             kakao_id = (Long) getIntent().getExtras().get("id");
-            Log.d("TAG", Long.toString(kakao_id));
             phoneNumber = (String) getIntent().getExtras().get("phoneNumber");
             PhoneNumber = phoneNumber;
             nickname = (String) getIntent().getExtras().get("nickname");
-            Log.d("TAG", nickname);
             if (PhoneNumber.startsWith("+82")) {
                 PhoneNumber = PhoneNumber.replace("+82", "0");
             }
@@ -106,11 +92,7 @@ public class MainActivity extends BaseActivity implements TextView.OnEditorActio
             kakao = true;
             setPhoneNumber();
             registerUser();
-        } else {
-            Log.d("프로세스", "인텐트를 넘겨받지 않음");
-
         }
-
         for (String permission : perMissionList) {
             int check = checkCallingOrSelfPermission(permission);
 
@@ -119,18 +101,10 @@ public class MainActivity extends BaseActivity implements TextView.OnEditorActio
             }
         }
 
-        //initializig firebase auth object
-
         if (firebaseAuth.getCurrentUser() != null) {
-            Log.d("프로세스", "이미파이어베이스에 존재함");
-            //이미 로그인 되었다면 이 액티비티를 종료함
             finish();
-            //그리고 profile 액티비티를 연다.
             startActivity(new Intent(getApplicationContext(), ModeActivity.class)); //추가해 줄 ProfileActivity
-        } else {
-
-            Log.d("프로세스", "파이어베이스에 존재하지않음");
-        }
+        } 
     }
 
     @Override
@@ -149,16 +123,13 @@ public class MainActivity extends BaseActivity implements TextView.OnEditorActio
 
     //Firebse creating a new user
     private void registerUser() {
-
         //사용자가 입력하는 email, password를 가져온다.
-
         password = "koreatech";
 
         if (isNetworkConnected() != true) {
             Toast.makeText(this, "모바일네트워크 연결바람", Toast.LENGTH_SHORT).show();
             return;
         }
-
         progressDialog.setMessage("등록 중입니다...");
         progressDialog.show();
 
@@ -217,6 +188,7 @@ public class MainActivity extends BaseActivity implements TextView.OnEditorActio
                 });
     }
 
+    /*로그인인증 함수*/
     private void LoginUser() {
         String id = Long.toString(kakao_id) + "@naver.com";
         String password = "koreatech";
@@ -225,8 +197,6 @@ public class MainActivity extends BaseActivity implements TextView.OnEditorActio
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // 로그인 성공
-
                             startActivity(new Intent(getApplicationContext(), ModeActivity.class));
                             finish();
                         } else {
@@ -272,14 +242,12 @@ public class MainActivity extends BaseActivity implements TextView.OnEditorActio
         @Override
         public void onSessionOpened() {
             redirectSignupActivity();
-            Log.d("Kakao", "이게 열림?");
         }
 
         @Override
         public void onSessionOpenFailed(KakaoException exception) {
             if (exception != null) {
                 Logger.e(exception);
-                Log.d("Kakao", "MainActivity에서");
                 if (AccessTokenCallback.flag) {
                     AccessTokenCallback.flag = false;
                     Uri uri = Uri.parse("https://developers.kakao.com/user/sample-app");
@@ -291,6 +259,7 @@ public class MainActivity extends BaseActivity implements TextView.OnEditorActio
         }
     }
 
+    /*카카오계정연동을 위한 해쉬키를 받아옴*/
     public String getHashKey(Context context) {
         final String TAG = "Kakao";
         String keyHash = null;
@@ -318,6 +287,7 @@ public class MainActivity extends BaseActivity implements TextView.OnEditorActio
         }
     }
 
+    /*사용자의 전화번호정보를 얻어옴*/
     public void setPhoneNumber() {
         TelephonyManager telManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 
