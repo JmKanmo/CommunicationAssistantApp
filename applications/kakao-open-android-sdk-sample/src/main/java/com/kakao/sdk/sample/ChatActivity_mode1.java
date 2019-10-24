@@ -53,7 +53,6 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
     Vector<String> stt_text = new Vector<String>();
 
     String[] perMissionList = {Manifest.permission.INTERNET};
-    ///////////////////////////
     final Context context = this;
     ImageView exit_Btn;
     ImageView help_Btn;
@@ -72,7 +71,6 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
     TextView stt_TextView;
     int n1; // 말풍선
     int n2;
-    ///////////////////////////
     private String chat_user_name = FirebaseAuth.getInstance().getCurrentUser().getEmail().split("@")[0];
     private DatabaseReference reference = FirebaseDatabase.getInstance().getReference("일상생활").child(chat_user_name);
     private ChildEventListener childEventListener = new ChildEventListener() {
@@ -97,7 +95,6 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
         public void onCancelled(DatabaseError databaseError) {
         }
     };
-    ////////////////////////////
     private String chat_user;
     private String chat_message;
     private String chat_phonenumber;
@@ -105,14 +102,10 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
 
     private String chat_function;
     private String chat_databaseReference;
-    ////////////////////////////////////
-    // private int clickCount = 0;
-    /////////////////////////////////////
     AudioManager am;
     VolumeObserver volumeObserver;
     static int volume_val = 0, prevolume_val = 0;
     private boolean clickFlag = false, micFlag = false, speakerFlag = false, cntFlag = false;
-    //tts
     private TextToSpeech mTTS;
     int pitch_val = 50, speed_val = 50;
     SeekBar pitch_bar, speed_bar;
@@ -121,7 +114,6 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
     private SpeechRecognizer speechRecognizer;
 
     private void speak(String text) {
-        //if (micFlag == true && text != null) mic_Btn.performClick();
         am.setStreamVolume(AudioManager.STREAM_MUSIC, 15, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
         float pitch = (pitch_bar == null) ? pitch_val / 50 : (float) pitch_bar.getProgress() / 50;
         if (pitch < 0.1) pitch = 0.1f;
@@ -129,20 +121,11 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
         if (speed < 0.1) speed = 0.1f;
         mTTS.setPitch(pitch);
         mTTS.setSpeechRate(speed);
-        //if (arrayList.size() > 0)  mTTS.speak(arrayList.get(arrayList.size() - 1), TextToSpeech.QUEUE_FLUSH, null);
         mTTS.speak(text, TextToSpeech.QUEUE_FLUSH, null);
 
         if (mic)
-            //speechRecognizer.stopListening();
             stopListen();
-
-        while (mTTS.isSpeaking()) {
-            Log.d("TAG", "말하는중!");
-        }
-
-        Log.d("TAG", "말하기 끝남");
         if (mic) {
-            //speechRecognizer.stopListening();
             startListen();
         }
     }
@@ -175,20 +158,16 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
                 case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
                     stopListen();
                     startListen();
-                    Log.d("TAG", "ERROR_NETWORK_TIMEOUT");
                     break;
                 case SpeechRecognizer.ERROR_NETWORK:
                     stopListen();
                     startListen();
-                    Log.d("TAG", "ERROR_NETWORK");
                     break;
                 case SpeechRecognizer.ERROR_AUDIO:
                     stopListen();
                     startListen();
-                    Log.d("TAG", "ERROR_AUDIO");
                     break;
                 case SpeechRecognizer.ERROR_SPEECH_TIMEOUT:
-                    Log.d("TAG", "ERROR_SPEECH_TIMEOUT");
                     try {
                         Thread.sleep(100);
                         stopListen();
@@ -200,34 +179,28 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
                 case SpeechRecognizer.ERROR_CLIENT:
                     stopListen();
                     startListen();
-                    Log.d("TAG", "ERROR_CLIENT");
                     break;
                 case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS:
                     stopListen();
                     startListen();
-                    Log.d("TAG", "ERROR_INSUFFICIENT_PERMISSIONS");
                     break;
                 case SpeechRecognizer.ERROR_NO_MATCH:
                     stopListen();
                     startListen();
-                    Log.d("TAG", "ERROR_NO_MATCH");
                     break;
                 case SpeechRecognizer.ERROR_RECOGNIZER_BUSY:
                     stopListen();
                     startListen();
-                    Log.d("TAG", "ERROR_RECOGNIZER_BUSY");
                     break;
                 case SpeechRecognizer.ERROR_SERVER:
                     stopListen();
                     startListen();
-                    Log.d("TAG", "ERROR_SERVER");
                     break;
             }
         }
 
         @Override
         public void onResults(Bundle results) {
-            Log.d("TAG", "온리졀트반환");
             String key = SpeechRecognizer.RESULTS_RECOGNITION;
             ArrayList<String> mResults = results.getStringArrayList(key);
             String[] rs = new String[mResults.size()];
@@ -242,10 +215,8 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
             chatData.setUser_room("");
             chatData.setDatabaseReference(temp);
             ref.setValue(chatData);
-
             stopListen();
             startListen();
-
         }
 
         @Override
@@ -258,7 +229,6 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
     };
 
     private void startListen() {
-        Log.d("TAG", "스타트리슨");
         am.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
         speechRecognizer = SpeechRecognizer.createSpeechRecognizer(getApplicationContext());
         speechRecognizer.setRecognitionListener(listener);
@@ -266,10 +236,8 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
     }
 
     private void stopListen() {
-
         if (speechRecognizer != null) {
             speechRecognizer.cancel();
-            Log.d("TAG", "스탑리슨");
             speechRecognizer.destroy();
         }
     }
@@ -278,9 +246,6 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        Log.d("프로세스", "모드1액티비티실행");
-
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return;
         }
@@ -319,7 +284,6 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
         i.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE, getPackageName());
         i.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ko-KR");
         am = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-        // 나가기 버튼 클릭 이벤트
         reference.addChildEventListener(childEventListener);
 
         exit_Btn.setOnClickListener(new View.OnClickListener() {
@@ -332,21 +296,12 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
         help_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 speak("안녕하십니까 저는 농인입니다. 저를 보고 편하게 말씀해주시면 당신의 음성이 텍스트로 보여집니다. ");
-
-
                 AlertDialog.Builder builder4 = new AlertDialog.Builder(context);
                 builder4.setMessage("1. 하단의 마이크버튼을 클릭하고 말하면 음성이 텍스트로 출력됩니다.\n\n " +"2. 하단의 입력창을 누르고 단어를 입력 후 말하기버튼을 클릭하면 말풍선과 함께 스피커로 단어가 출력됩니다.").setCancelable(false).setNegativeButton("예", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                       // finish();
-                    }
                 });
                 AlertDialog alertDialog4 = builder4.create();
                 alertDialog4.show();
-
             }
         });
 
@@ -395,7 +350,6 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
                             chatData.setDatabaseReference(temp);
                             ref.setValue(chatData);
                             ref.removeValue();
-                            // firebase에 조지기
                         }
                     }
                 });
@@ -435,10 +389,7 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         tts_LinearLayout.removeAllViews();
-
-                        //Log.d("TAG!!","돌아가니?");
                         for (int a = 0; a < tts_text.size(); a++) {
-                            //Log.d("TAG!!",tts_text.get(a).split("/")[tts_text.get(a).split("/").length - 1]);
                             reference.child(tts_text.get(a).split("/")[tts_text.get(a).split("/").length - 1]).removeValue();
                         }
                         tts_text.clear();
@@ -500,15 +451,6 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
     }
 
     @Override
-    protected void onStart() {
-        Log.d("TAG_ChatActivity_mode1", "onStart");
-        super.onStart();
-
-        String string = " 박관호";
-
-    }
-
-    @Override
     protected void onResume() {
         Log.d("TAG", "mode1onResume");
         mic_Btn.setImageResource(R.drawable.offbtn);
@@ -521,20 +463,7 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
         }
         super.onResume();
     }
-
-    @Override
-    protected void onRestart() {
-        Log.d("TAG_ChatActivity_mode1", "onRestart");
-        super.onRestart();
-    }
-
-    @Override
-    protected void onPause() {
-        Log.d("TAG_ChatActivity_mode1", "onPause");
-        super.onPause();
-
-    }
-
+    
     @Override
     protected void onStop() {
         am.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
@@ -556,12 +485,7 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
         }
         speechRecognizer.destroy();
         reference.removeEventListener(childEventListener);
-        //finish();
-
         super.onDestroy();
-
-
-        //android.os.Process.killProcess(android.os.Process.myPid());
     }
 
     private void chatConversation(DataSnapshot dataSnapshot) {
@@ -574,13 +498,8 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
             chat_phonenumber = (String) ((DataSnapshot) i.next()).getValue();
             chat_room = (String) ((DataSnapshot) i.next()).getValue();
         }
-
-        Log.d("XXX", chat_databaseReference);
-        Log.d("XXX", chat_function);
-
-
+        
         if (chat_user_name.equals(chat_user)) {
-            //  Log.d("TAG","중복실행");
             if (chat_function.equals("tts_speak")) {
                 speak(chat_message);
                 reference.child(chat_databaseReference.split("/")[chat_databaseReference.split("/").length - 1]).removeValue();
@@ -595,33 +514,18 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
                 chatData.setDatabaseReference(temp);
                 ref.setValue(chatData);
             }
-            /*
-            if (chat_function.equals("tts_input")) {
-                reference.child(chat_databaseReference.split("/")[chat_databaseReference.split("/").length - 1]).removeValue();
-                ChatData chatData = new ChatData();
-                String temp = reference.push().toString();
-                DatabaseReference ref = reference.child(temp.split("/")[temp.split("/").length - 1]);
-                chatData.setMsg(chat_message);
-                chatData.setFuntcion("tts_text");
-                chatData.setUser_name(chat_user_name);
-                chatData.setUser_room("");
-                chatData.setUser_phoneNumber(chat_user_phoneNumber);
-                chatData.setDatabaseReference(temp);
-                ref.setValue(chatData);
-            }*/
+         
             if (chat_function.equals("mic_on")) {
                 reference.child(chat_databaseReference.split("/")[chat_databaseReference.split("/").length - 1]).removeValue();
-
                 if (clickFlag)
                     clickFlag = false;
                 else
                     clickFlag = true;
-
+                
                 if (clickFlag) {
                     startListen();
                     mic_Btn.setImageResource(R.drawable.onbtn);
                     prevolume_val = volume_val;
-                    //am.setStreamVolume(AudioManager.STREAM_MUSIC, 0, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
                     final Toast toast = Toast.makeText(context, "Mic on", Toast.LENGTH_SHORT);
                     mic = true;
                     toast.show();
@@ -636,7 +540,6 @@ public class ChatActivity_mode1 extends Activity implements TextView.OnEditorAct
                     stopListen();
                     mic_Btn.setImageResource(R.drawable.offbtn);
                     volume_val = prevolume_val;
-                    //am.setStreamVolume(AudioManager.STREAM_MUSIC, volume_val, AudioManager.FLAG_REMOVE_SOUND_AND_VIBRATE);
                     final Toast toast = Toast.makeText(context, "Mic off", Toast.LENGTH_SHORT);
                     mic = false;
                     toast.show();
