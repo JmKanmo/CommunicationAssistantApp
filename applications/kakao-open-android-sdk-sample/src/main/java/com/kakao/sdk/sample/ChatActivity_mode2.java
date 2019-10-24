@@ -49,7 +49,6 @@ public class ChatActivity_mode2 extends Activity implements TextView.OnEditorAct
     Intent i;
     ImageView exit_Btn;
     ImageView help_Btn;
-    //ImageView mic_Btn;
     ImageView menu_Btn;
     ImageView stt_Reset;
     ImageView tts_Reset;
@@ -65,7 +64,6 @@ public class ChatActivity_mode2 extends Activity implements TextView.OnEditorAct
     int n1; // 말풍선
     int n2;
     boolean clickFlag;
-    ///////////////////////////
     private String chat_room_name;
     private String chat_user_name = FirebaseAuth.getInstance().getCurrentUser().getEmail().split("@")[0];
 
@@ -103,13 +101,10 @@ public class ChatActivity_mode2 extends Activity implements TextView.OnEditorAct
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        Log.d("프로세스", "모드2액티비티실행");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_mode2);
 
         mode2Activity = ChatActivity_mode2.this;
-
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             return;
@@ -124,7 +119,6 @@ public class ChatActivity_mode2 extends Activity implements TextView.OnEditorAct
         exit_Btn = findViewById(R.id.exit_btn);
         help_Btn = findViewById(R.id.help_btn);
         tts_EditBtn = findViewById(R.id.tts_Edit);
-        // mic_Btn = findViewById(R.id.tts_Btn);
         stt_Reset = findViewById(R.id.stt_reset);
         tts_Reset = findViewById(R.id.tts_reset);
         tts_ScrollView = findViewById(R.id.tts_ScrollView);
@@ -166,14 +160,8 @@ public class ChatActivity_mode2 extends Activity implements TextView.OnEditorAct
         help_Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // KakaoToast.makeToast(getApplicationContext(), "1.하드웨어가 인식한 음성이 텍스트로 출력됩니다.\n\n " +
-                   //     "2.하단의 입력창을 누르고 입력 후 말하기버튼을 클릭하면 말풍선과 함께 하드웨어 스피커로 출력됩니다.", Toast.LENGTH_LONG).show();
-
                 AlertDialog.Builder builder4 = new AlertDialog.Builder(context);
-                //TextView messageText = new TextView(context);
-                //messageText.setTextSize(15);
-                //messageText.setText("1.하드웨어가 인식한 음성이 텍스트로 출력됩니다.\n\n" + "2.하단의 입력창을 누르고 입력 후 말하기버튼을 클릭하면 말풍선과 함께 하드웨어 스피커로 출력됩니다.");
-                builder4.setMessage("1. 하드웨어가 인식한 음성이 텍스트로 출력됩니다.\n\n" + "2. 하단의 입력창을 누르고 입력 후 말하기버튼을 클릭하면 말풍선과 함께 하드웨어 스피커로 출력됩니다.").setCancelable(false).setNegativeButton("예", new DialogInterface.OnClickListener() {
+                 builder4.setMessage("1. 하드웨어가 인식한 음성이 텍스트로 출력됩니다.\n\n" + "2. 하단의 입력창을 누르고 입력 후 말하기버튼을 클릭하면 말풍선과 함께 하드웨어 스피커로 출력됩니다.").setCancelable(false).setNegativeButton("예", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         //finish();
@@ -181,21 +169,13 @@ public class ChatActivity_mode2 extends Activity implements TextView.OnEditorAct
                 });
                 AlertDialog alertDialog4 = builder4.create();
                 alertDialog4.show();
-
-
             }
         });
-
-
-
-
 
         // 메뉴 버튼 클릭 이벤트
         tts_EditBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 AlertDialog.Builder builder3 = new AlertDialog.Builder(context);
                 builder3.setTitle("하고싶은말을입력하세요.");
                 ttsEdit = new EditText(context);
@@ -206,7 +186,6 @@ public class ChatActivity_mode2 extends Activity implements TextView.OnEditorAct
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (MyService.network) {
-
                             ChatData chatData = new ChatData();
                             String temp = reference.push().toString();
                             DatabaseReference ref = reference.child(temp.split("/")[temp.split("/").length - 1]);
@@ -245,9 +224,6 @@ public class ChatActivity_mode2 extends Activity implements TextView.OnEditorAct
                                 }
                             });
                             tts_text.add(temp);
-
-
-                            // firebase에 조지기
                         } else {
                             Toast toast = Toast.makeText(context, "네트워크 연결 상태를 확인해주세요.", Toast.LENGTH_SHORT);
                             toast.show();
@@ -423,10 +399,6 @@ public class ChatActivity_mode2 extends Activity implements TextView.OnEditorAct
             ref.setValue(chatData);
             ref.removeValue();
         }
-
-        //Log.d("프로세스", chat_user_name);
-        //Log.d("프로세스", chat_room_name);
-        //Log.d("프로세스", "돌아가니?");
         reference.removeEventListener(childEventListener);
         super.onDestroy();
 
@@ -435,8 +407,6 @@ public class ChatActivity_mode2 extends Activity implements TextView.OnEditorAct
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Log.d("TAG_ChatActivity_mode2", "onBackPressed");
-        //reference.removeEventListener(childEventListener);
     }
 
     private void chatConversation(DataSnapshot dataSnapshot) {
