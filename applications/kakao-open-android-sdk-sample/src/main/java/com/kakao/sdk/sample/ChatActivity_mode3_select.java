@@ -38,6 +38,8 @@ import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
+/* 통화기능 액티비티 클래스정의 */
+
 public class ChatActivity_mode3_select extends AppCompatActivity implements TextView.OnEditorActionListener {
 
     final Context context = this;
@@ -88,7 +90,6 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
         public void run() {
             long curTime = System.currentTimeMillis();
             diff = (curTime - firstTime) / 1000;
-            Log.d("TAG", diff + "초");
 
             if (diff > 30) {
                 if (received) {
@@ -135,10 +136,7 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
                     chatData.setDatabaseReference(temp);
                     ref.setValue(chatData);
                     ref.removeValue();
-
                     FirebaseDatabase.getInstance().getReference("통화").child(chat_user_name + "&" + KakaoTalkFriendListActivity.chat_target_name).removeValue();
-
-
                 }
                 timer.cancel();
             }
@@ -171,15 +169,9 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        Log.d("프로세스", "전화선택모드액티비티실행");
-
         reference.addChildEventListener(childEventListener);
-
-
         vibrator = (Vibrator) getSystemService(context.VIBRATOR_SERVICE);
-
         timer = new Timer();
         timer.schedule(new CustomTimer(), 1000, 1000);
 
@@ -196,24 +188,19 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
             mediaPlayer.start();
             startVibrate();
             setContentView(R.layout.dial_reception);
-
             dial_accept_btn = findViewById(R.id.dial_accept_btn);
             dial_refuse_btn = findViewById(R.id.dial_refuse_btn);
             textView = findViewById(R.id.sender_name);
-
             FindAddressClick_received(sender);
 
-            //textView.setText(info[0]);
             dial_accept_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     mediaPlayer.stop();
                     mediaPlayer.reset();
                     vibrator.cancel();
                     timer.cancel();
                     isStop = true;
-
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference(sender).child("dial");
                     ChatData chatData = new ChatData();
                     String temp = reference.push().toString();
@@ -230,14 +217,10 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
                     if (MyService.deaf) {
                         finish();
                         Intent intent = new Intent(getApplicationContext(), ChatActivity_mode3_deaf.class);
-                        // intent.putExtra("received", received);
-                        // intent.putExtra("sender", sender);
                         startActivity(intent);
                     } else {
                         finish();
                         Intent intent = new Intent(getApplicationContext(), ChatActivity_mode3_nondeaf.class);
-                        //intent.putExtra("received", received);
-                        //intent.putExtra("sender", sender);
                         startActivity(intent);
                     }
                 }
@@ -245,13 +228,11 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
             dial_refuse_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     mediaPlayer.stop();
                     mediaPlayer.reset();
                     vibrator.cancel();
                     timer.cancel();
                     isStop = true;
-
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference(sender).child("dial");
                     ChatData chatData = new ChatData();
                     String temp = reference.push().toString();
@@ -261,22 +242,16 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
                     chatData.setUser_name(chat_user_name);
                     chatData.setUser_phoneNumber(MainActivity.PhoneNumber);
                     chatData.setUser_room("");
-
                     chatData.setDatabaseReference(temp);
                     ref.setValue(chatData);
                     ref.removeValue();
-
                     finish();
                 }
             });
         } else {
             setContentView(R.layout.dial_waiting);
             target_name = findViewById(R.id.target_name);
-
             FindAddressClick_send(KakaoTalkFriendListActivity.chat_target_name);
-            //target_name.setText(info[0]);
-
-
             dial_cancel_btn = findViewById(R.id.exit_btn);
             dial_cancel_btn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -286,7 +261,6 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
                     reference.removeEventListener(childEventListener);
                     isStop = true;
                     DatabaseReference reference = FirebaseDatabase.getInstance().getReference(KakaoTalkFriendListActivity.chat_target_name).child("dial");
-
                     ChatData chatData = new ChatData();
                     String temp = reference.push().toString();
                     DatabaseReference ref = reference.child(temp.split("/")[temp.split("/").length - 1]);
@@ -298,15 +272,10 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
                     chatData.setDatabaseReference(temp);
                     ref.setValue(chatData);
                     ref.removeValue();
-
                     FirebaseDatabase.getInstance().getReference("통화").child(chat_user_name + "&" + KakaoTalkFriendListActivity.chat_target_name).removeValue();
                     sendNotification(KakaoTalkFriendListActivity.chat_target_name, chat_myName);
-
-
                 }
             });
-
-
         }
     }
 
@@ -356,8 +325,6 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
 
     @Override
     protected void onDestroy() {
-        Log.d("TAG_select", "onDestroy");
-
         if (received) {
             mediaPlayer.stop();
             mediaPlayer.reset();
@@ -373,19 +340,15 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
             chatData.setUser_name(chat_user_name);
             chatData.setUser_phoneNumber(MainActivity.PhoneNumber);
             chatData.setUser_room("");
-
-
             chatData.setDatabaseReference(temp);
             ref.setValue(chatData);
             ref.removeValue();
-
             finish();
         } else {
             finish();
             timer.cancel();
             reference.removeEventListener(childEventListener);
             isStop = true;
-
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference(KakaoTalkFriendListActivity.chat_target_name).child("dial");
             ChatData chatData = new ChatData();
             String temp = reference.push().toString();
@@ -398,25 +361,13 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
             chatData.setDatabaseReference(temp);
             ref.setValue(chatData);
             ref.removeValue();
-
         }
-
         super.onDestroy();
-        /*
-        if (mediaPlayer != null) {
-            mediaPlayer.release();
-            mediaPlayer = null;
-        }
-        reference.removeEventListener(childEventListener);
-        */
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Log.d("TAG_select", "onBackPressed");
-
-
         if (received) {
             mediaPlayer.stop();
             mediaPlayer.reset();
@@ -432,11 +383,9 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
             chatData.setUser_name(chat_user_name);
             chatData.setUser_phoneNumber(MainActivity.PhoneNumber);
             chatData.setUser_room("");
-
             chatData.setDatabaseReference(temp);
             ref.setValue(chatData);
             ref.removeValue();
-
             finish();
         } else {
             finish();
@@ -456,8 +405,6 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
             ref.setValue(chatData);
             ref.removeValue();
         }
-        // finish();
-        // reference.removeEventListener(childEventListener);
     }
 
     @Override
@@ -469,45 +416,29 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
         Iterator i = dataSnapshot.getChildren().iterator();
         while (i.hasNext()) {
             chat_databaseReference = (String) ((DataSnapshot) i.next()).getValue();
-            Log.d("PARK", chat_databaseReference);
             chat_function = (String) ((DataSnapshot) i.next()).getValue();
-            Log.d("PARK", chat_function);
             chat_message = (String) ((DataSnapshot) i.next()).getValue();
-            Log.d("PARK", chat_message);
             chat_user = (String) ((DataSnapshot) i.next()).getValue();
-            Log.d("PARK", chat_user);
             chat_phoneNumber = (String) ((DataSnapshot) i.next()).getValue();
-            Log.d("PARK", chat_phoneNumber);
             chat_room = (String) ((DataSnapshot) i.next()).getValue();
-            Log.d("PARK", chat_room);
         }
         if (chat_function.equals("dial_accept")) {
             if (MyService.deaf) {
                 finish();
                 reference.removeEventListener(childEventListener);
                 Intent intent = new Intent(getApplicationContext(), ChatActivity_mode3_deaf.class);
-                // intent.putExtra("received", received);
-                // intent.putExtra("sender", sender);
                 startActivity(intent);
             } else {
                 finish();
                 reference.removeEventListener(childEventListener);
                 Intent intent = new Intent(getApplicationContext(), ChatActivity_mode3_nondeaf.class);
-                //intent.putExtra("received", received);
-                //intent.putExtra("sender", sender);
                 startActivity(intent);
-
             }
-
-            //reference.child(chat_databaseReference.split("/")[chat_databaseReference.split("/").length - 1]).removeValue();
-
         } else if (chat_function.equals("dial_refuse")) {
             FirebaseDatabase.getInstance().getReference("통화").child(chat_user_name + "&" + KakaoTalkFriendListActivity.chat_target_name).removeValue();
             reference.child(chat_databaseReference.split("/")[chat_databaseReference.split("/").length - 1]).removeValue();
             finish();
             reference.removeEventListener(childEventListener);
-
-
         } else if (chat_function.equals("dial_cancel")) {
             Log.d("dialselect", chat_function);
             mediaPlayer.stop();
@@ -517,18 +448,15 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
             finish();
             reference.removeEventListener(childEventListener);
         }
-
     }
 
     private void sendNotification(String target, String senderName) {
-        Log.d("TAG", "targetname:" + target);
         JSONObject json = new JSONObject();
         try {
             json.put("to", "/topics/" + target);
             JSONObject notificationObj = new JSONObject();
             notificationObj.put("title", "부재중 알림");
             notificationObj.put("body", senderName + "님께서 통화를 요청했습니다.");
-            //notificationObj.put("clickAction", "ModeActivity");
             json.put("notification", notificationObj);
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL, json, new Response.Listener<JSONObject>() {
                 @Override
@@ -652,8 +580,6 @@ public class ChatActivity_mode3_select extends AppCompatActivity implements Text
                         if (userId.equals(id)) {
                             temp = nickname + "&" + phoneNumber + "&" + deaf;
                             info[0] = temp;
-                            //target_name.setText(info[0].split("&")[1]+"\n"+info[0].split("&")[0]);
-                            target_name.setText(info[0].split("&")[0] + chat_isdeaf);
                         }
 
                         deaf = "";
